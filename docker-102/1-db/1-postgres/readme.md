@@ -11,4 +11,5 @@ docker exec -i learn-postgres psql -U root -c "SELECT rolname FROM pg_roles;"
 
 # 練習2: 轉換為使用 docker-compose
 docker-compose up -d
+docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' `container_id`
 ```
