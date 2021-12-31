@@ -4,9 +4,8 @@
 #練習一： 會先確認本機是否有下載過 `hello-world`，沒有的話會自動下載 latest 版本 image
 docker run hello-world
 
-#練習二： 指定 `image` 及 `tag` 下載至本機
-docker pull debian:buster-slim
-docker run --rm -it -v $PWD:/workspace debian:buster-slim
+#練習二： 使用 busybox image，簡單操作 ping 指令
+docker run busybox ping -c 3 google.com
 ```
 
 

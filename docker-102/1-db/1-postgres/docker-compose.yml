@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: learn-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: rootpwd
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080

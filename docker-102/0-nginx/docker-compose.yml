@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  vault:
+    image: nginx-demo:v1.0.2
+    container_name: my-nginx # 等同於在 docker run 時 --name 參數
+    restart: always
+    ports: # 等同於在 docker run 時 -p 參數
+      - 8080:80
+
+# version: '3'
+
+# services:
+#   my-nginx:
+#     build:
+#       context: .
+#     container_name: my-nginx
+#     restart: always
+#     ports:
+#       - 8080:80
+#     volumes:
+#       - ./static:/usr/share/nginx/html
