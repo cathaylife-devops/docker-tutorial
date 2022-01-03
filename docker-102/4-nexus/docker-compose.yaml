@@ -1,13 +1,14 @@
-# Source from https://github.com/sonatype/docker-nexus
+# Source from https://github.com/sonatype/docker-nexus3
 version: "2"
 
 services:
   nexus:
-    image: sonatype/nexus
-    volumes:
-      - "nexus-data:/sonatype-work"
+    image: sonatype/nexus3
+    volumes: # 使用 volume ，對應到 container 中的 /nexus-data 資料夾，資料夾存放 config, logs 等資料
+      - "nexus-data:/nexus-data"
     ports:
       - "8081:8081"
-  
+
+# 等於 docker volume create --name nexus-data
 volumes:
   nexus-data: {}

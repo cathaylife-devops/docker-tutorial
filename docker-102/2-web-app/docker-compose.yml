@@ -7,6 +7,7 @@ services:
   app: # app container
     image: tiangolo/uvicorn-gunicorn-fastapi:python3.9-slim
     restart: always # container 結束後會自動重啟
+    # 將目前的資料夾全部的內容，掛載到 container 中的 /app 資料夾下
     volumes:
       - ./:/app
     ports:
