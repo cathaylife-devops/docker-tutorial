@@ -1,0 +1,14 @@
+# file-based-app is service name, might need to be modified as needed
+
+[http]
+ [http.routers]
+    [http.routers.file-based-app-router]
+       entryPoints = ["http"]
+       rule = "PathPrefix(`/file-based-app`)"
+       service = "file-based-app"
+
+
+ [http.services]
+    [http.services.file-based-app.loadBalancer]
+       [[http.services.file-based-app.loadBalancer.servers]]
+           url = "http://[continaer file-based-app's ip]:80" # proxy url needs to be modified

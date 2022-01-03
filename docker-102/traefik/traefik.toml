@@ -1,0 +1,15 @@
+[entryPoints]
+
+  [entryPoints.http]  
+     address = ":80"
+
+[providers]
+  [providers.docker]
+    defaultRule = "Host(`traefik.admin`)"
+    exposedByDefault = false
+  [providers.file]
+    directory = "/etc/traefik/conf"
+    watch = true
+
+[api]
+  dashboard = true

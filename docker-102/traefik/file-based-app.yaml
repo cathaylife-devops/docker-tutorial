@@ -1,0 +1,7 @@
+version: "3"
+
+services:
+  file-based-app:
+    image: nginxdemos/hello:0.2
+    network_mode: bridge
+    container_name: file-based-app

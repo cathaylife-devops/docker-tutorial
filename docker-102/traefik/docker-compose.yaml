@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  traefik:
+    # The official v2 Traefik docker image
+    image: traefik:v2.4.11
+    container_name: traefik
+    restart: always
+    network_mode: bridge
+    labels:
+      traefik.enable: 'true'
+      traefik.http.routers.traefik.service: api@internal
+      traefik.http.routers.traefik.entrypoints: http
+    ports:
+      # The HTTP port
+      - "80:80"
+    volumes:
+      # So that Traefik can listen to the Docker events
+      - /var/run/docker.sock:/var/run/docker.sock
+      - $PWD/traefik.toml:/etc/traefik/traefik.toml
+      - $PWD/conf:/etc/traefik/conf

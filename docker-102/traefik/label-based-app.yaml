@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  label-based-app:
+    image: nginxdemos/hello:0.2
+    network_mode: bridge
+    container_name: label-based-app
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.label-based-app-router.rule=PathPrefix(`/label-based-app`)" # path prefix
+      - "traefik.http.routers.label-based-app-router.entrypoints=http" # entrypoints http is defined in traefik config file traefik.toml 
+      - "traefik.http.services.label-based-app.loadbalancer.server.port=80" # container's exposed port
+      #                         ↑ label-based-app is service name, might need to be modified as needed
