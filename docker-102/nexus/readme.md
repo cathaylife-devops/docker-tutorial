@@ -6,8 +6,14 @@ Nexus 提供 bare-metal 安裝與 Docker Image，透過官方提供的 Compose f
 
 預設 Admin 帳號密碼：
 
-帳號：admin
-密碼：可以在 Nexus 啟動後位於 ```$data-dir``` 目錄中的 ```admin.password``` 的檔案中找到，[Nexus Docs](https://help.sonatype.com/repomanager3/nexus-repository-administration/access-control/users)
+- 帳號：admin
+- 密碼：可以在 Nexus 啟動後位於 ```/nexus-data``` 目錄中的 ```admin.password``` 的檔案中找到，[Nexus Docs](https://help.sonatype.com/repomanager3/nexus-repository-administration/access-control/users)
+
+```bash
+docker exec -it [container name] bash
+# in container
+cat /nexus-data/admin.password
+```
 
 ## Ref
 

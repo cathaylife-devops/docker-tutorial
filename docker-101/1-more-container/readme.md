@@ -27,7 +27,7 @@ docker pull debian:buster-slim
 Container 執行完畢後自動刪除
 
 ```bash
-#練習三： 指定 Container name
+#練習三： 執行完畢後，Container 被自動刪除
 docker run --rm busybox ping -c 3 google.com
 docker ps -a
 ```
@@ -77,8 +77,8 @@ Host 與 Container Port 的映射，常用於
 ```-p [host port]:[container port]```
 
 ```bash
-#練習七： 掛載指定目錄至 Container 中
-docker run --rm --name my-nginx -p 8080:80 nginxdemos:hello
+#練習七： 將 Host 的 8080 port 映射至 Container 的 80 port
+docker run --rm --name my-nginx -p 8080:80 nginx:alpine
 # Open a browser and go to localhost:8080
 ```
 
