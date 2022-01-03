@@ -1,0 +1,3 @@
+FROM busybox
+COPY ./entrypoint.sh /tmp
+ENTRYPOINT ["/bin/sh", "/tmp/entrypoint.sh"]

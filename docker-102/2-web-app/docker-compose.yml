@@ -3,8 +3,10 @@ version: '3'
 services:
   redis: # redis container
     image: redis:6.2.6
+    restart: always # container 結束後會自動重啟
   app: # app container
     image: tiangolo/uvicorn-gunicorn-fastapi:python3.9-slim
+    restart: always # container 結束後會自動重啟
     volumes:
       - ./:/app
     ports:

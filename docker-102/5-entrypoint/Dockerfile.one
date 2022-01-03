@@ -1,0 +1,4 @@
+FROM busybox
+COPY ./hi.sh /tmp
+ENTRYPOINT ["/bin/sh", "/tmp/hi.sh"]
+CMD ["Docker"]

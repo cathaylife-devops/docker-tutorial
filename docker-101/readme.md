@@ -7,4 +7,4 @@ Requirements:
 
 Goals:
 
-1. docker command: run, build, ps, logs
+1. docker command: run, build, ps, logs, exec
