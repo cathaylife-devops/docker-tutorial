@@ -5,6 +5,7 @@ services:
     image: redis:6.2.6
   app: # app container
     image: tiangolo/uvicorn-gunicorn-fastapi:python3.9-slim
+    # 將目前的資料夾全部的內容，掛載到 container 中的 /app 資料夾下
     volumes:
       - ./:/app
     ports:
