@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  redis: # redis container
+    image: redis:6.2.6
+  app: # app container
+    image: tiangolo/uvicorn-gunicorn-fastapi:python3.9-slim
+    volumes:
+      - ./:/app
+    ports:
+      - 8000:8000
+    # command 若要執行多行 Command 需要用 bash -c "" 的方式執行
+    command: >
+      bash -c " pip install -r requirements.txt
+      && uvicorn --host 0.0.0.0 main:app"
+    # Container 中的網路服務如果要讓外部可以連接，都必須使用 0.0.0.0 作為 Host，有些是預設使用 127.0.0.1，會導致無法接通
+  
