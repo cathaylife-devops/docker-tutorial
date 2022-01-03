@@ -17,7 +17,7 @@
 2. Linux
     安裝 Docker Engine，[Debian](https://docs.docker.com/engine/install/debian/)、[Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
     安裝 [docker-compose](https://docs.docker.com/compose/install/#install-compose)
-3. [GCP Cloud Shell](https://shell.cloud.google.com/)，進入後即可以使用一個具有安裝好 Docker 並配有 VSCode 的虛擬機環境，GCP Cloud Shell 為免費服務無需支費任何費用。
+3. [GCP Cloud Shell](https://shell.cloud.google.com/)，進入後即可以使用一個具有安裝好 Docker 並配有 VSCode 的虛擬機環境。GCP Cloud Shell 為免費服務無需支費任何費用，每週可使用 50 小時，其他使用限制請參考 [Cloud Shell Doc - Limitations and restrictions](https://cloud.google.com/shell/docs/limitations)。
 
 執行以下指令，確認 Docker 可以正常運作
 
