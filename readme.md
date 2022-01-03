@@ -8,7 +8,7 @@
 4. docker-compose 撰寫與使用
 5. 使用情境
 
-## Requiremens
+## Requirements
 
 安裝 Docker, docker-compose
 
@@ -25,11 +25,13 @@ docker run -d -p 80:80 docker/getting-started
 ```
 
 ## busybox, alpine, scratch
+
 > busybox: 是一個 Linux 指令工具包，被譽為 Linux 的瑞士刀（如 cat、echo、grep、mount、telnet 等）
 
 > alpine: 以 musl libc(C的標準函式庫，主要用於Linux核心) 及 busybox 為基礎，僅 5 MB 大小的映像檔，適合當做 Base Image 使用
 
 > scratch: 是空的 image(docker 保留字)
+
 ## Reference
 
 1. [Docker Docs - Get Started](https://docs.docker.com/get-started/)
