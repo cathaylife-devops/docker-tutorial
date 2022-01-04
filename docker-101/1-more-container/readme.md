@@ -8,8 +8,9 @@
 docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
 ```
 
+練習一：使用 busybox image，簡單操作 ping 指令
+
 ```bash
-# 練習一：使用 busybox image，簡單操作 ping 指令
 docker run busybox ping -c 3 google.com
 ```
 
@@ -17,8 +18,9 @@ docker run busybox ping -c 3 google.com
 
 [Docker docs](https://docs.docker.com/engine/reference/commandline/run/)
 
+練習二：指定 `image` 及 `tag` 下載至本機
+
 ```bash
-# 練習二：指定 `image` 及 `tag` 下載至本機
 docker pull debian:buster-slim
 ```
 
@@ -26,8 +28,9 @@ docker pull debian:buster-slim
 
 Container 執行完畢後自動刪除
 
+練習三：執行完畢後，Container 被自動刪除
+
 ```bash
-# 練習三：執行完畢後，Container 被自動刪除
 docker run --rm busybox ping -c 3 google.com
 docker ps -a
 ```
@@ -36,8 +39,9 @@ docker ps -a
 
 指定 Container 的名稱
 
+練習四：指定 Container name
+
 ```bash
-# 練習四：指定 Container name
 docker run --name my-debian debian:buster-slim
 docker ps -a
 ```
@@ -49,8 +53,9 @@ docker ps -a
 
 效果類似於 SSH 連線進入 Container 中操作
 
+練習五：以 -it 進入 Container 中
+
 ```bash
-# 練習五：以 -it 進入 Container 中
 docker run -it --rm debian:buster-slim
 ```
 
@@ -62,10 +67,15 @@ docker run -it --rm debian:buster-slim
 
 ```-v [本機目錄]:[Container 目錄]```
 
+練習六：掛載指定目錄至 Container 中
+
 ```bash
-# 練習六：掛載指定目錄至 Container 中
 docker run --rm -v $PWD:/workspace -it debian:buster-slim
-# In container
+```
+
+因為 ```-it``` 所以已經進入 Container 的 Terminal，執行以下指令
+
+```bash
 ls -lha /
 ls -lha /workspace
 ```
@@ -76,21 +86,25 @@ Host 與 Container Port 的映射，常用於
 
 ```-p [host port]:[container port]```
 
+練習七：將 Host 的 8080 port 映射至 Container 的 80 port
+
 ```bash
-#練習七：將 Host 的 8080 port 映射至 Container 的 80 port
 docker run --rm --name my-nginx -p 8080:80 nginx:alpine
-# Open a browser and go to localhost:8080
 ```
+
+前往 [localhost:8080](localhost:8080) 驗證結果
 
 ### -d
 
 以 [Daemon](https://zh.wikipedia.org/wiki/%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B) 守護行程方式啟動 Container，等同於背景執行，不會受當前終端機關閉影響
 
+練習八：使用 nginx 建立 web server，背景執行
+
 ```bash
-# 練習八：使用 nginx 建立 web server，背景執行
 docker run --name my-nginx -p 8080:80 -d --rm nginx:alpine 
-# Open a browser and go to localhost:8080
 ```
+
+前往 [localhost:8080](localhost:8080) 驗證結果
 
 ## docker logs
 
@@ -98,15 +112,23 @@ docker run --name my-nginx -p 8080:80 -d --rm nginx:alpine
 
 [Docker docs](https://docs.docker.com/engine/reference/commandline/logs/)
 
+練習九：查閱 Container Log
+
 ```bash
-# 練習九：查閱 Container Log
 docker run --name my-nginx -p 8080:80 -d --rm nginx:alpine 
-# 印出所有 log
 docker logs my-nginx
-# 印出最後 10 行 log
+```
+
+```--tail``` 或 ```-n``` 參數指定印出最後 10 行 log
+
+```bash 
 docker logs --tail 10 my-nginx
 docker logs -n 10 my-nginx
-# 以跟隨模式監看 log
+```
+
+以跟隨模式監看 log
+
+```bash
 docker logs -f my-nginx
 docker logs -n 10 -f my-nginx
 ```
@@ -122,35 +144,39 @@ docker cp [OPTIONS] SRC_PATH CONTAINER:DEST_PATH
 
 [Docker docs](https://docs.docker.com/engine/reference/commandline/cp/)
 
+練習十：Host 與 Container 檔案交換
+
 ```bash
-# 練習十：Host 與 Container 檔案交換
 docker run --name my-debian -it --rm debian:buster-slim
-# in container my-debian
-cd /tmp
-echo "Hi, host" >> hello.txt
-cat hello.txt
-# another terminal in host
-docker cp my-debian:/tmp/hello.txt ./
-cat hello.txt
-echo "Hi, my-debian" >> hello.txt
-docker cp hello.txt my-debian:/tmp/hello.txt
-# in container my-debian
-cd /tmp
-cat hello.txt
+```
+
+因為 ```-it``` 所以已經進入 Container 的 Terminal，執行以下指令，驗證 Container 中有 os-release 這個檔案
+
+```bash
+cat /etc/os-release
+```
+
+開啟另一個 Terminal，將 my-debian 的 /etc/os-release 複製至當前目錄
+
+```
+docker cp my-debian:/etc/os-release ./
 ```
 
 ## docker exec
 
 當 Container 已經在執行中時，可以透過 ```docker exec``` 在 Container 執行特定指令
 
+練習十一：在執行中的 Container 執行其他指令，以及進入 Container 中
+
 ```bash
-# 練習十一：在執行中的 Container 執行其他指令，以及進入 Container 中
 docker run --name my-nginx -p 8080:80 -d --rm nginx:alpine 
-# 在執行中的 Container 執行其他指令
 docker exec my-nginx cat /etc/os-release
-# 進入 Container 中，若 Image 有 bash 可以將 /bin/sh 替換成 bash
 docker exec -it my-nginx /bin/sh
-# in container
+```
+
+因為 ```-it``` 所以已經進入 Container 的 Terminal，執行以下指令
+
+```bash
 cat /etc/os-release
 ```
 
@@ -169,7 +195,7 @@ Check point:
 
 ### Task 2
 
-1. 使用 debian:buster-slim 建立一個名稱為 sl-debian 的 Container，並直接進入 Container
+1. 使用 debian:buster-slim 建立一個名稱為 sl-debian 且執行結束後會自動刪除的 Container，並直接進入 Container
 2. 安裝 sl package，安裝指令為 ```apt-get update && apt-get install sl```
 3. 執行 sl
 4. 離開 Container 時讓 Container 自動刪除
