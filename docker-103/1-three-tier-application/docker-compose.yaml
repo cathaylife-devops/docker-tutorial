@@ -1,0 +1,46 @@
+version: "3"
+
+services:
+  db:
+    image: postgres:11
+    volumes:
+      - ./db_data:/var/lib/postgresql/data # persistent DB data
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+  backend:
+    build:
+      context: ./backend
+    restart: always
+    environment:
+      - DATABASE=postgres
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  frontend:
+    build: # 
+      context: ./frontend
+    restart: always
+    ports:
+      - "80:80"
+    # 被 nginx porxy 的 server 必須要晚於 nginx 啟動，才可以使用後端的 hostname 'backend' 找到該 Container
+    depends_on: 
+      - backend
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=pgadmin4@pgadmin.org
+      - PGADMIN_DEFAULT_PASSWORD=admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - db

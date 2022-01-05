@@ -1,0 +1,3 @@
+alembic
+fastapi-sqlalchemy
+psycopg2-binary
