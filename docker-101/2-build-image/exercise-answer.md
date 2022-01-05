@@ -9,7 +9,7 @@ Checkpoint:
 - [x] 以 demo-image:v0.2.0 啟動一個 Container，確認 sl 指令有正常執行
 
 ```Dockerfile
-FROM ubuntu:18.04
+FROM debian:buster-slim
 
 WORKDIR /app
 
