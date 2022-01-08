@@ -1,0 +1,21 @@
+version: "3"
+services:
+  chrome:
+    image: seleniarm/node-chromium:4.0.0-20211213
+    shm_size: 2gb
+    ports:
+      - 5900:5900 # VNC Port 視需求使用
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+
+    selenium-hub:
+    image: selenium/hub:4.1.1-20211217
+    container_name: selenium-hub
+    ports:
+      - "4442:4442" # EVENT_BUS_PUBLISH_PORT
+      - "4443:4443" # EVENT_BUS_SUBSCRIBE_PORT
+      - "4444:4444"
