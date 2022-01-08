@@ -180,6 +180,59 @@ docker exec -it my-nginx /bin/sh
 cat /etc/os-release
 ```
 
+## FAQ
+
+1. 執行 ```docker rm [container name / id]``` 時出現以下錯誤
+    ```txt
+    Error response from daemon: You cannot remove a running container 56ab97a2cd087bffd0188cd03374c1d4a034e8ba43672f9f7d99fb4a615b535e. Stop the container before attempting removal or force remove
+    ```
+    - 原因
+
+        因為要刪除的 Container 仍在執行中，所以無法刪除該 Container
+    
+    - 解決方法
+
+        先停止 Container，再進行刪除
+
+        ```bash
+        docker stop [container name / id]
+        docker rm [container name / id]
+        ```
+
+        或者增加 ```-f``` option，以強制模式刪除 Container
+
+        ```bash
+        docker rm -f [container name / id]
+        ```
+
+2. 執行 ```docker rmi [image name / id]``` 時出現以下錯誤
+
+    ```txt
+    Error response from daemon: conflict: unable to remove repository reference "debian:buster-slim" (must force) - container 56ab97a2cd08 is using its referenced image e659ceeeff6c
+    ```
+
+    - 原因
+
+        因為有 Container 正在使用要刪除的 Image，所以無法刪除該 Image 
+
+    - 解決方法
+
+        先刪除使用該 Image 的 Container 後再刪除 Image
+
+        ```bash
+        docker stop [container name / id]
+        docker rm [container name / id]
+        docker rmi [image name / id]
+        ```
+
+3. 以 ```-it``` 搭配 ```bash``` 或 ```sh``` 進入 Container 後如何離開？
+
+    按下 Ctrl + D 或是輸入 ```exit```
+
+4. 未使用 Daemon 模式啟動 Container 時如何停止？
+
+    按下 Ctrl + C
+
 ## Exercise
 
 ### Task 1
