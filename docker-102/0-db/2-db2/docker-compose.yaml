@@ -2,7 +2,6 @@ version: '3'
 
 services:
   db2:
-    platform: linux/amd64
     image: ibmcom/db2:latest
     container_name: learn-db2
     restart: always
