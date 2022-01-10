@@ -42,7 +42,7 @@ docker ps -a
 練習四：指定 Container name
 
 ```bash
-docker run --name my-debian debian:buster-slim
+docker run --rm --name my-debian debian:buster-slim
 docker ps -a
 ```
 
