@@ -233,6 +233,23 @@ cat /etc/os-release
 
     按下 Ctrl + C
 
+5. Container 佔用的硬碟空間大小為何？
+
+    ```bash
+    docker ps -as
+    ```
+
+6. Container、Image 使用的硬碟空間目錄在哪？
+
+    執行 ```docker info``` 指令可以顯示 Docker 的相關資訊，```Docker Root Dir``` 的值即為 Docker 儲存所有資料的位置，若沒有另外設定通常值為 ```/var/lib/docker```。
+
+    Mac 或 Windows 使用 Docker Desktop 時，一般都是由 Docker Desktop 啟動 Linux 虛擬機執行，所以執行 ```docker info``` 時仍會發現 ```Docker Root Dir``` 也是 ```/var/lib/docker```。若安裝時皆使用預設值，實際對應在本機的位置如下：
+
+    - Windows: C:\ProgramData\DockerDesktop
+    - MacOS: ~/Library/Containers/com.docker.docker/Data/vms/0/
+
+    [Docker Docs](https://docs.docker.com/engine/reference/commandline/info/)
+
 ## Exercise
 
 ### Task 1
