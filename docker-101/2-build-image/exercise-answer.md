@@ -2,7 +2,7 @@
 
 ## Task 1
 
-1. 建立一版新的 demo-image:v0.2.0，讓 Container 啟動時執行 sl 指令
+1. 建立一版新的 demo-image:v0.2.0，讓 Container 啟動時以 ```/usr/games/sl``` 執行 sl 指令，並使用 ```-t``` 參數配置一個虛擬終端機
 
 Checkpoint:
 
@@ -16,14 +16,14 @@ WORKDIR /app
 COPY ./hello.txt /app
 
 RUN apt-get update && \
-    apt-get install sl
+    apt-get -y install sl
 
-CMD sl
+CMD /usr/games/sl
 ```
 
 ```bash
 docker build -t demo-image:v0.2.0 .
 # check demo-image:v0.2.0 image
 docker images
-docker run --rm demo-image:v0.2.0
+docker run --rm -t demo-image:v0.2.0
 ```
