@@ -153,13 +153,13 @@ docker run --name my-debian -it --rm debian:buster-slim
 因為 ```-it``` 所以已經進入 Container 的 Terminal，執行以下指令，驗證 Container 中有 os-release 這個檔案
 
 ```bash
-cat /etc/os-release
+cat /usr/lib/os-release
 ```
 
-開啟另一個 Terminal，將 my-debian 的 /etc/os-release 複製至當前目錄
+開啟另一個 Terminal，將 my-debian 的 /usr/lib/os-release 複製至當前目錄
 
 ```
-docker cp my-debian:/etc/os-release ./
+docker cp my-debian:/usr/lib/os-release ./
 ```
 
 ## docker exec
@@ -170,14 +170,14 @@ docker cp my-debian:/etc/os-release ./
 
 ```bash
 docker run --name my-nginx -p 8080:80 -d --rm nginx:alpine 
-docker exec my-nginx cat /etc/os-release
+docker exec my-nginx cat /usr/lib/os-release
 docker exec -it my-nginx /bin/sh
 ```
 
 因為 ```-it``` 所以已經進入 Container 的 Terminal，執行以下指令
 
 ```bash
-cat /etc/os-release
+cat /usr/lib/os-release
 ```
 
 ## FAQ
