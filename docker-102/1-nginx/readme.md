@@ -1,6 +1,6 @@
 # Nginx
 
-web server with ningx container
+web server with nginx container
 
 ```bash
 # 練習1: 建立 nginx web server

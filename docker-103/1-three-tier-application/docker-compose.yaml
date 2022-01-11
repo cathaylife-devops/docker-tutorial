@@ -12,8 +12,8 @@ services:
       - POSTGRES_PASSWORD=postgres
 
   backend:
-    build:
-      context: ./backend
+    build: # 不使用已經存在的 Image，而是改用 Build 的方式生成
+      context: ./backend # 指定 Build Image 的目錄，等同於在 ./backend 目錄下執行 docker build
     restart: always
     environment:
       - DATABASE=postgres
@@ -26,8 +26,8 @@ services:
       - db
 
   frontend:
-    build: # 
-      context: ./frontend
+    build: # 不使用已經存在的 Image，而是改用 Build 的方式生成
+      context: ./frontend # 指定 Build Image 的目錄，等同於在 ./frontend 目錄下執行 docker build
     restart: always
     ports:
       - "80:80"

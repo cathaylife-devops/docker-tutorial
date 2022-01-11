@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  vault:
+  my-nginx:
     image: nginx-demo:v1.0.2
     container_name: my-nginx # 等同於在 docker run 時 --name 參數
     restart: always
