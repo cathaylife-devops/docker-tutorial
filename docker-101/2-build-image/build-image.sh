@@ -1,0 +1,1 @@
+docker build -t demo-image:v0.1.0 .
