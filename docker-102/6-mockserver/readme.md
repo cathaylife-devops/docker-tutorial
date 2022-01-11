@@ -4,6 +4,8 @@
 docker-compose up -d
 ```
 
+> `URL`/api/v1/weather?code=10969
+
 Ref:
 
 - [mock-server](https://www.mock-server.com/)
