@@ -19,7 +19,7 @@ docker push [username]/demo-image:v0.1.0
 
 ### Task 1
 
-1. 建立一版新的 demo-image:v0.2.0，讓 Container 啟動時執行 sl 指令
+1. 建立一版新的 demo-image:v0.2.0，讓 Container 啟動時以 ```/usr/games/sl``` 執行 sl 指令，並使用 ```-t``` 參數配置一個虛擬終端機
 
 Checkpoint:
 

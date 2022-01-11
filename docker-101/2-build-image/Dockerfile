@@ -5,6 +5,6 @@ WORKDIR /app
 COPY ./hello.txt /app
 
 RUN apt-get update && \
-    apt-get install -y sl
+    apt-get -y install sl
 
 CMD cat /app/hello.txt
