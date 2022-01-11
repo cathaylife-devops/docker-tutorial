@@ -5,6 +5,10 @@
 
 使用 Docker Compose 建立 Web App 與 DB 的 Container，並讓 Web App 連接 DB
 
+```bash
+docker exec -i `container id or name` redis-cli get 'count'
+```
+
 ## Ref
 
 - https://docs.docker.com/compose/gettingstarted/
