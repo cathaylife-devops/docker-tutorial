@@ -1,0 +1,19 @@
+[
+    {
+      "httpRequest" : {
+        "method" : "GET",
+        "path" : "/api/v1/weather",
+        "queryStringParameters" : {
+          "code" : ["10969"]
+      }
+    },
+      "httpResponse" : {
+        "body" : "{\"wheather\": 20.5}",
+        "delay": {
+            "timeUnit": "SECONDS",
+            "value": 5
+        },
+        "statusCode": 200
+      }
+    }
+  ]
