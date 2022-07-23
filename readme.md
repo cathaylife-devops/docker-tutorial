@@ -33,6 +33,11 @@ docker run -d -p 80:80 docker/getting-started
 
 > scratch: 是空的 image(docker 保留字)
 
+## Recommended Resources
+
+1. [Docker Best Practices](https://gist.github.com/luismts/725fd70c7e963884b3a430e55ffb3432)
+2. [Container Training](https://github.com/jpetazzo/container.training)
+
 ## Reference
 
 1. [Docker Docs - Get Started](https://docs.docker.com/get-started/)
