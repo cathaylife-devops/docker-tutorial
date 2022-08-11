@@ -2,6 +2,9 @@
 
 ## Hands On Docker
 
+[Docker Hub](https://hub.docker.com/)  
+[Docker playground](https://labs.play-with-docker.com/)
+
 > 打開 playground 點選 `ADD NEW INSTANCE`
 
 練習一： 假設自己在家裡安裝Docker，可以透過 ```docker info``` 確認所有 docker 的資訊( conatiner,image,network,cgroup,cpu...)
