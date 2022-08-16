@@ -78,21 +78,6 @@ docker run --detach --publish=80:80 --name=webserver nginx
 
 *A: 起一個 nginx container 給他 `80` port 並給他名稱 `webserver`*
 
-html素材：
-
-```html
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Docker Workshop</title>
-</head>
-<body>
-  Hello world~!
-</body>
-</html>
-```
-
 練習一： Contianer 裡面的資料和本機的空間是不同的
 
 ```bash
@@ -107,6 +92,21 @@ exit
 ```
 
 練習二：把靜態網頁掛載 nginx container 的 `/usr/share/nginx/html` 能用 `8080` port 開啟網頁
+
+html素材：
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Docker Workshop</title>
+</head>
+<body>
+  Hello world~!
+</body>
+</html>
+```
 
 ```bash
 // 建立html資料夾放靜態網頁
@@ -126,6 +126,8 @@ esc
 // 建立html資料夾放靜態網頁
 docker run -d -p=8080:80 -v $PWD/html:/usr/share/nginx/html --name=cathaylife nginx
 ```
+
+> 請大家一定都要檢查網站的 Domain name(域名)！
 
 ## Ref
 
