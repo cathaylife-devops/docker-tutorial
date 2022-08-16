@@ -37,6 +37,7 @@ docker run -d -p 80:80 docker/getting-started
 
 1. [Docker Best Practices](https://gist.github.com/luismts/725fd70c7e963884b3a430e55ffb3432)
 2. [Container Training](https://github.com/jpetazzo/container.training)
+3. [Docker CLI cheatsheet](https://devhints.io/docker)
 
 ## Reference
 
